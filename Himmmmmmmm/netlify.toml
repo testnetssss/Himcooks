@@ -1,0 +1,19 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+
+# Required for silent Live Auto (set in Netlify UI, do not commit secrets):
+#   SOLANA_PRIVATE_KEY = base58 key of DEDICATED hot wallet
+#   LIVE_EXEC_SECRET   = long random string
+#   TELEGRAM_BOT_TOKEN = optional
+#   SOLANA_RPC_URL     = optional paid RPC
+
